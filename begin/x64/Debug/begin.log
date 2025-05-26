@@ -1,0 +1,6 @@
+﻿  Application.cpp
+E:\my_program\visualstudio\projects\opengl\begin\Application.cpp(152,21): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\my_program\visualstudio\projects\opengl\begin\Application.cpp(153,21): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\my_program\visualstudio\projects\opengl\begin\Application.cpp(154,19): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+E:\my_program\visualstudio\projects\opengl\begin\Application.cpp(175,23): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  begin.vcxproj -> E:\my_program\visualstudio\projects\opengl\begin\x64\Debug\begin.exe
