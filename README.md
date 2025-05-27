@@ -2,13 +2,20 @@
 
 模型来自于 [模之屋](https://www.aplaybox.com/u/680828836)
 
-思路：
+**思路**
 
 - 使用 assimp 实现模型的加载；
 - 模型的贴图使用 opencv 来加载材质信息；
 - 动态背景使用的是 [shadertoy](https://www.shadertoy.com/view/WfcGWj) 的 GLSL 示例代码进行渲染；
 
-后续改进计划：
+**主要的工作内容**
+
+- 构建 shader 类，可以加载不同类型的 GLSL 创建对应的 shader，同时提供设置 GLSL 中 uniform 变量的方法；
+- 构建 vertex array类，提供手动设置 vertex buffer 的数据属性；
+- texture 类，使用 opencv 加载图像数据用于纹理创建；
+- camera 类，可以实现鼠标左键对模型进行旋转；
+
+**后续改进计划**
 
 - 鼠标左键旋转模型针对单个模型来进行；
 - 整合 [lmgui](https://github.com/ocornut/imgui) 来实现一些输入控制；
