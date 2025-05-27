@@ -21,6 +21,8 @@
 
 效果展示：
 
+![img](./img/res.gif)
+
 ![img](./img/pic1.png)
 
 ![img](./img/pic2.png)

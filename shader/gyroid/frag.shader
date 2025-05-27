@@ -46,7 +46,7 @@ out vec4 FragColor;
 uniform float curTime;
 
 float g(vec4 p,float s) {
-    return abs(dot(sin(p*=s),cos(p.zxwy))-1.)/s;
+    return abs(dot(sin(p*=s),cos(p.wzxy))-1.)/s;
 }
 
 void mainImage(out vec4 O, vec2 C) {

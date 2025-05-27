@@ -222,7 +222,7 @@ int main() {
             float transX = i * 15.0f;
             glm::mat4 m = glm::translate(model, glm::vec3(transX, 0.0f, 0.0f));
             float dir = speedPhase[i][2];
-            m = glm::rotate(m, dir*glm::radians(curTime * (speedPhase[i][0] + 6)) + speedPhase[i][1], glm::vec3(0.0f, 1.0f, 0.0f));
+            m = glm::rotate(m, dir*glm::radians(curTime * (speedPhase[i][0] + 12)) + speedPhase[i][1], glm::vec3(0.0f, 1.0f, 0.0f));
             
             shaderModel->SetUniformMat4(m, "model");
             shaderModel->SetUniformMat4(view, "view");

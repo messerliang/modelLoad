@@ -43,8 +43,8 @@ void Camera::updateCameraRotation(GLFWwindow* window) {
         //std::cout << "target: " << m_cameraTarget.x << ", " << m_cameraTarget.y << ", " << m_cameraTarget.z << std::endl;
         //std::cout << "pos: " << m_cameraPos.x << ", " << m_cameraPos.y << ", " << m_cameraPos.z << std::endl;
         //std::cout << "Mouse clicked at: " << xpos << ", " << ypos << std::endl;
-        float diffPitch = sensitivity * (ypos - m_rotateAnchorY);
-        float diffYaw = sensitivity * (xpos - m_rotateAnchorX);
+        float diffPitch = sensitivity * (m_rotateAnchorY - ypos);
+        float diffYaw = sensitivity * (m_rotateAnchorX - xpos);
         tmpPitch = m_viewPitch + diffPitch;
         tmpYaw = m_viewYaw + diffYaw;
 
@@ -123,13 +123,13 @@ void Camera::updateCameraPosition(){
     diff = glm::normalize(glm::cross(m_cameraDirection, m_cameraUp)) * cameraSpeed;
 
     if (m_keys[GLFW_KEY_A]) {
-        m_cameraPos -= diff;
-        m_cameraTarget -= diff;
+        m_cameraPos += diff;
+        m_cameraTarget += diff;
 
     }
     if (m_keys[GLFW_KEY_D]) {
-        m_cameraPos += diff;
-        m_cameraTarget += diff;
+        m_cameraPos -= diff;
+        m_cameraTarget -= diff;
     }
     // 摄像机上下移动
     diff = m_cameraUp * cameraSpeed;
