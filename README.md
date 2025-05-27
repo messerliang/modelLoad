@@ -20,8 +20,9 @@
 [B站视频展示](https://www.bilibili.com/video/BV1Maj5z1Ehi/?vd_source=0bc24278cd7a0c76a9cea9d12245ddd8)
 
 效果展示：
-
-![img](./img/res.gif)
+<div style="text-align: center;">
+    <img src="./img/res.gif"/>
+</div>
 
 ![img](./img/pic1.png)
 
