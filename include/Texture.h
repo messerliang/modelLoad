@@ -16,12 +16,12 @@ private:
 	int m_channel;
 	unsigned char* m_imageData = nullptr;
 
-	// 读取数据
-	int ReadImage(bool flipY=true);
+	// 读取数据，默认垂直翻转
+	int ReadImage(int flip);
 
 public:
 
-	Texture(const std::string& imgPath,  bool flipY=true);
+	Texture(const std::string& imgPath,  int flipY=111);
 	Texture(const Texture& other):
 		m_textureId(other.m_textureId),
 		m_imagePath(other.m_imagePath),

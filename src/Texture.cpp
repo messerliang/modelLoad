@@ -8,24 +8,25 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>
 
-Texture::Texture(const std::string& imgPath, bool flipY): m_textureId(-1){
+Texture::Texture(const std::string& imgPath, int flip): m_textureId(-1){
     m_imagePath = utf8_to_ansi(imgPath);
     // »ù±¾ÅäÖÃ
     BasicSet();
 
     // ¶ÁÈ¡Í¼Æ¬
-    if (ReadImage(flipY)) {
+    if (ReadImage(flip)) {
 
-        int len = MultiByteToWideChar(CP_UTF8, 0, imgPath.c_str(), -1, NULL, 0);
-        std::wstring ws(len, L'\0');
-        MultiByteToWideChar(CP_UTF8, 0, imgPath.c_str(), -1, &ws[0], len);
+        //int len = MultiByteToWideChar(CP_UTF8, 0, imgPath.c_str(), -1, NULL, 0);
+        //std::wstring ws(len, L'\0');
+        //MultiByteToWideChar(CP_UTF8, 0, imgPath.c_str(), -1, &ws[0], len);
 
-        // ÒÆ³ýÄ©Î²µÄ null terminator
-        ws.resize(wcslen(ws.c_str()));
-        std::wcout << ws << " read failed\n";
+        //// ÒÆ³ýÄ©Î²µÄ null terminator
+        //ws.resize(wcslen(ws.c_str()));
+        //std::wcout << ws << " read failed\n";
+        std::cout << utf8_to_ansi(imgPath) << "read failed\n";
     }
     else {
-        std::cout << "success: " << imgPath << std::endl;
+        std::cout << "success: " << utf8_to_ansi(imgPath) << std::endl;
     }
 
     // Éú³ÉÎÆÀí
@@ -85,7 +86,7 @@ void Texture::BasicSet() {
 }
 
 
-int Texture::ReadImage(bool flipY) {
+int Texture::ReadImage(int flip) {
 
     //if(flipY){ stbi_set_flip_vertically_on_load(true); }
     //
@@ -103,8 +104,9 @@ int Texture::ReadImage(bool flipY) {
         return -1;
     }
     cv::cvtColor(img, img, cv::COLOR_BGR2RGB);
-    if (flipY) {
-        cv::flip(img, img, 0);
+    if (flip >= -1 && flip <=1) {
+        cv::flip(img, img, flip);
+        std::cout << "flip: " << flip << std::endl;
     }
     size_t sz = img.total() * img.elemSize();
     m_imageData = (unsigned char*)new char[sz];

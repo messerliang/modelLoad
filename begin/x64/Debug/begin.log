@@ -3,4 +3,16 @@ E:\my_program\visualstudio\projects\opengl\begin\Application.cpp(152,21): warnin
 E:\my_program\visualstudio\projects\opengl\begin\Application.cpp(153,21): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
 E:\my_program\visualstudio\projects\opengl\begin\Application.cpp(154,19): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
 E:\my_program\visualstudio\projects\opengl\begin\Application.cpp(175,23): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  Model3D.cpp
+D:\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: “APIENTRY”: 宏重定义
+  (编译源文件“src/Model3D.cpp”)
+  E:\my_program\visualstudio\lib\glfw-3.4\include\GLFW\glfw3.h(123,1):
+  参见“APIENTRY”的前一个定义
+  
+E:\my_program\visualstudio\projects\opengl\begin\src\Model3D.cpp(76,3): warning C4244: “参数”: 从“unsigned int”转换到“GLfloat”，可能丢失数据
+E:\my_program\visualstudio\projects\opengl\begin\src\Model3D.cpp(83,2): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
+  正在生成代码...
+glew32s.lib(glew.obj) : warning LNK4099: 未找到 PDB“”(使用“glew32s.lib(glew.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+LINK : warning LNK4098: 默认库“LIBCMT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
   begin.vcxproj -> E:\my_program\visualstudio\projects\opengl\begin\x64\Debug\begin.exe

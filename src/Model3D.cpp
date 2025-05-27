@@ -76,12 +76,7 @@ void Mesh::Draw(Shader& shader) {
 		GLCall(glUniform1f(glGetUniformLocation(shader.m_shaderProgramId, sample2DTexName.c_str()), i));
 		GLCall(glBindTexture(GL_TEXTURE_2D, this->m_textures[i].id));
 	}
-	//if (texCnt.size()) {
-	//	std::cout << "in mesh " << m_meshName << ": \n";
-	//	for (auto& k : texCnt) {
-	//		std::cout << k.first << ": " << k.second << std::endl;
-	//	}
-	//}
+
 
 	// 绘制 Mesh
 	GLCall(glBindVertexArray(this->VAO));
@@ -122,7 +117,7 @@ void Model3D::loadModel(std::string path)
 }
 void Model3D::processNode(aiNode* node, const aiScene* scene)
 {
-	std::cout << utf8_to_ansi(node->mName.C_Str()) << ", node mesh num: " << node->mNumMeshes << ", node child num: " << node->mNumChildren << std::endl;
+	//std::cout << utf8_to_ansi(node->mName.C_Str()) << ", node mesh num: " << node->mNumMeshes << ", node child num: " << node->mNumChildren << std::endl;
 	// 添加所有的 Mesh 信息
 	for (uint32_t i = 0; i < node->mNumMeshes; i++) {
 		aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
@@ -141,7 +136,7 @@ Mesh Model3D::processMesh(aiMesh* mesh, const aiScene* scene)
 	std::vector<GLuint> indices;
 	std::vector<TextureInfo> textures;
 	std::string name = mesh->mName.C_Str();
-	std::cout << utf8_to_ansi(name) << " vertex num: " << mesh->mNumVertices << std::endl;
+	//std::cout << utf8_to_ansi(name) << " vertex num: " << mesh->mNumVertices << std::endl;
 	for (uint32_t i = 0; i < mesh->mNumVertices; ++i) {
 		// 处理顶点坐标、法线、纹理坐标
 		Vertex vertex;
@@ -203,7 +198,10 @@ std::vector<TextureInfo> Model3D::loadMaterialTextures(aiMaterial* mat, aiTextur
 		if (existTextures.count(std_str)) {
 			continue;
 		}
-		Texture texObj(this->directory + "/" + str.C_Str(), false);
+		std::string imgPath = this->directory + "/" + str.C_Str();
+
+		Texture texObj(imgPath);
+
 		if (-1 == texObj.GetId()) {
 			continue;
 		}
