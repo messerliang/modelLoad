@@ -12,6 +12,11 @@ private:
 	unsigned int m_id;
 	unsigned int m_count;
 public:
+	//
+	// 参数1：index 数组
+	// 参数2：数组包含多少个元素
+	//
+
 	IndexBuffer(const unsigned int* index, unsigned int count);
 	~IndexBuffer();
 

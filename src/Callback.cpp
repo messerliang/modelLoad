@@ -4,9 +4,9 @@
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
-    //std::cout << "pos: " << camera.m_cameraPos.x << " " << camera.m_cameraPos.y << " " << camera.m_cameraPos.z
-    //    << " look at:" << camera.m_cameraDirection.x << " " << camera.m_cameraDirection.y << " " << camera.m_cameraDirection.z << std::endl;
-    //
+    std::cout << "pos: " << camera.m_cameraPos.x << " " << camera.m_cameraPos.y << " " << camera.m_cameraPos.z
+        << " look at:" << camera.m_cameraDirection.x << " " << camera.m_cameraDirection.y << " " << camera.m_cameraDirection.z << std::endl;
+    
     if (key >= 0 && key < 1024)
     {
         if (action == GLFW_PRESS)
@@ -45,7 +45,7 @@ void mouse_scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
     if (camera.m_fov < min_fov) { camera.m_fov = min_fov; }
     if (camera.m_fov > max_fov) { camera.m_fov = max_fov; }
 
-    //std::cout << "scroll adjust: " << yoffset << ", fov: " << camera.m_fov << std::endl;
+    std::cout << "scroll adjust: " << yoffset << ", fov: " << camera.m_fov << std::endl;
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
@@ -60,6 +60,6 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
         0.1f, 100.0f        // 近平面和远平面
     );
 
-    //std::cout << "width: " << width << ", height: " << height << std::endl;
+    std::cout << "width: " << width << ", height: " << height << std::endl;
     
 }

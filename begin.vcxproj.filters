@@ -84,6 +84,9 @@
     <ClCompile Include="test\testShader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="test\lightTestScene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\basic.vert">
@@ -100,6 +103,8 @@
     <None Include="shader\triangle.vert" />
     <None Include="shader\model\fragment.shader" />
     <None Include="shader\model\vertex.shader" />
+    <None Include="shader\light\basic.vert" />
+    <None Include="shader\light\basic.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\GL_Error.h">

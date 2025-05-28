@@ -68,7 +68,7 @@ void Camera::updateCameraRotation(GLFWwindow* window) {
         glm::normalize(m_cameraDirection);
 
 
-        //std::cout << "pitch: " << m_viewPitch << ", yaw: " << m_viewYaw << std::endl;
+        std::cout << "pitch: " << m_viewPitch << ", yaw: " << m_viewYaw << std::endl;
     }
 
     if (m_updateRotateFlag) {
@@ -141,7 +141,7 @@ void Camera::updateCameraPosition(){
         m_cameraPos -= diff;
         m_cameraTarget -= diff;
     }
-
+    
 }
 
 
