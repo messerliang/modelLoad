@@ -22,6 +22,7 @@ private:
 	std::vector<LayoutElement> m_layoutSets;
 	unsigned int m_id;
 	unsigned int m_stride;
+	unsigned int m_vertexNum;
 
 
 	template<typename T>
@@ -45,6 +46,7 @@ public:
 	void Unbind() const;
 	const std::vector<LayoutElement>& GetLayout() const;
 	unsigned int GetStride() const;
+	unsigned int GetVertexNum() const;
 	
 	
 	template<typename T>

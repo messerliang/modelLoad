@@ -25,6 +25,7 @@ public:
 	void Bind()const;
 	void Unbind()const;
 	void DrawElement(Shader& shader) const;
+	void DrawArray(Shader& shader) const;
 
 
 };

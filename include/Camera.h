@@ -14,7 +14,7 @@ private:
 	GLFWwindow* m_window;
 
 	// 摄像机相关的参数
-	glm::vec3 m_cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+	glm::vec3 m_cameraPos = glm::vec3(0.0f, 0.0f, 10.0f);
 	glm::vec3 m_cameraDirection = glm::vec3(0.0f, 0.0f, -1.0f);
 	glm::vec3 m_cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
@@ -69,6 +69,8 @@ public:
 
 	glm::mat4 getView();
 	glm::mat4 getProjection(GLFWwindow* window);
+	glm::vec3 getPosition() const;
+
 
 	friend void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 	friend void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);

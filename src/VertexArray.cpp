@@ -40,3 +40,10 @@ void VertexArray::DrawElement(Shader& shader) const {
 	this->m_indexBuffer.Bind();
 	GLCall(glDrawElements(GL_TRIANGLES, m_indexBuffer.GetCount(), GL_UNSIGNED_INT, nullptr));
 }
+
+void VertexArray::DrawArray(Shader& shader) const {
+	shader.Use();
+	Bind();
+	GLCall(glDrawArrays(GL_TRIANGLES, 0, m_vertexBuffer.GetVertexNum()));
+	;
+}

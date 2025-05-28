@@ -27,7 +27,6 @@ int main() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	
-
 	// 创建窗口
 	GLFWwindow* window = glfwCreateWindow(800, 600, "light scene", nullptr, nullptr);
 	if (!window) {
@@ -51,17 +50,47 @@ int main() {
 	}
 
 	float cubePositions[] = {
-		// 前面四个点
-		-0.5f, -0.5f, 0.5f,
-		 0.5f,  0.5f, 0.5f,
-		 0.5f, -0.5f, 0.5f,
-		-0.5f,  0.5f, 0.5f,
+	-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 
-		// 后面四个点
-		-0.5f, -0.5f, -0.5f,
-		 0.5f,  0.5f, -0.5f,
-		 0.5f, -0.5f, -0.5f,
-		-0.5f,  0.5f, -0.5f,
+	-0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+	 0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+	 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+	 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+
+	-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+	-0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+	-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+	-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+	-0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+	-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+
+	 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+	 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+	 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+	 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+	 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+
+	-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+	 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+	 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+	 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+
+	-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+	 0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+	 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+	 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
 	};
 	unsigned int cubeIndex[] = {
 		// 前面
@@ -91,20 +120,27 @@ int main() {
 
 	VertexBuffer* vbPtr = new VertexBuffer(cubePositions, sizeof(cubePositions));
 	vbPtr->Push<float>(3, false);
+	vbPtr->Push<float>(3, false);
 
 	IndexBuffer idxObj(cubeIndex, sizeof(cubeIndex)/sizeof(cubeIndex[0]));
 
 	VertexArray* vaPtr = new VertexArray(*vbPtr, idxObj);
 	
 
-	Shader* cubeShader = new Shader("shader/light/basic.vert", "shader/light/basic.frag");
+	Shader* cubeShader = new Shader("shader/light/Phong.vert", "shader/light/Phong.frag");
+	Shader* lightShader = new Shader("shader/light/light.vert", "shader/light/light.frag");
 
 	// model、view、projection三件套
 	glm::mat4 model(1.0f);
-	glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, -3.0f), glm::vec3(0.0f, 0.0f, 0), glm:: vec3(0.0f, 1.0f, 0.0f));
-	glm::mat4 projection = glm::perspective(glm::radians(30.0f), 1.0f * 800 / 600, 0.1f, 100.f);
+	glm::mat4 view =camera.getView();
+	glm::mat4 projection = camera.getProjection(window);
 
+	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+	glm::mat4 lightModel(1.0f);
+	lightModel = glm::translate(lightModel, lightPos);
+	lightModel = glm::scale(lightModel, glm::vec3(0.2f));
 
+	glm::vec3 lightColor(1.0f, 1.0f, 1.0f), objectColor(1.0f, 0.0f, 0.0f);
 	while (!glfwWindowShouldClose(window)) {
 		int width, height;
 		glfwGetFramebufferSize(window, &width, &height);
@@ -113,11 +149,12 @@ int main() {
 		camera.updateCamera(window);
 
 		// render here
-		GLCall(glClearColor(0.05f, 0.05f, 0.05f, 1.0f));
+		GLCall(glClearColor(0.1f, 0.1f, 0.1f, 1.0f));
 		GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+		// 开启深度测试
+		glEnable(GL_DEPTH_TEST);
 
-		cubeShader->Use();
-		GLCall(glEnable(GL_DEPTH_TEST));
+		cubeShader->Use(); 
 
 		view = camera.getView();
 		projection = camera.getProjection(window);
@@ -125,9 +162,24 @@ int main() {
 		cubeShader->SetUniformMat4(model, "model");
 		cubeShader->SetUniformMat4(view, "view");
 		cubeShader->SetUniformMat4(projection, "projection");
+		cubeShader->SetUniform1f(0.1f, "ambientStrength");
+		cubeShader->SetUniform1f(0.5f, "specularStrength");
+		cubeShader->SetUniformV3(lightPos, "lightPos");
+		cubeShader->SetUniformV3(camera.getPosition(), "viewPos");
 
-		vaPtr->DrawElement(*cubeShader);
+		cubeShader->SetUniformV3(lightColor, "lightColor");
+		cubeShader->SetUniformV3(glm::vec3(1.0f, 0.5f, 0.31f), "objectColor");
 
+
+		vaPtr->DrawArray(*cubeShader);
+
+
+		// 绘制光源
+		lightShader->Use();
+		lightShader->SetUniformMat4(lightModel, "model");
+		lightShader->SetUniformMat4(view, "view");
+		lightShader->SetUniformMat4(projection, "projection");
+		vaPtr->DrawArray(*lightShader);
 
 		glBindVertexArray(0);
 		glfwSwapBuffers(window);
@@ -137,6 +189,7 @@ int main() {
 	delete(vaPtr);
 	delete(vbPtr);
 	delete(cubeShader);
+	delete(lightShader);
 
 
 	glfwDestroyWindow(window);

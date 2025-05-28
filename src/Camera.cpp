@@ -40,8 +40,8 @@ void Camera::updateCameraRotation(GLFWwindow* window) {
             //std::cout << "set ancor£º" << ypos << " " << m_rotateAnchorY << std::endl;
 
         }
-        //std::cout << "target: " << m_cameraTarget.x << ", " << m_cameraTarget.y << ", " << m_cameraTarget.z << std::endl;
-        //std::cout << "pos: " << m_cameraPos.x << ", " << m_cameraPos.y << ", " << m_cameraPos.z << std::endl;
+        std::cout << "target: " << m_cameraTarget.x << ", " << m_cameraTarget.y << ", " << m_cameraTarget.z << std::endl;
+        std::cout << "pos: " << m_cameraPos.x << ", " << m_cameraPos.y << ", " << m_cameraPos.z << std::endl;
         //std::cout << "Mouse clicked at: " << xpos << ", " << ypos << std::endl;
         float diffPitch = sensitivity * (m_rotateAnchorY - ypos);
         float diffYaw = sensitivity * (m_rotateAnchorX - xpos);
@@ -179,3 +179,6 @@ glm::mat4 Camera::getProjection(GLFWwindow* window) {
     return glm::perspective(glm::radians(m_fov), 1.0f * width / height, 0.1f, 100.f);
 }
 
+glm::vec3 Camera::getPosition() const {
+    return m_cameraPos;
+}

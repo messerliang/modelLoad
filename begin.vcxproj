@@ -146,6 +146,7 @@
     <ClCompile Include="src\Render.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\stb_image.cpp" />
+    <ClCompile Include="test\basicDrawUsingMyClass.cpp" />
     <ClCompile Include="test\lightTestScene.cpp" />
     <ClCompile Include="test\loadModel.cpp" />
     <ClCompile Include="src\Texture.cpp" />
@@ -158,8 +159,12 @@
     <None Include="shader\basic.frag" />
     <None Include="shader\gyroid\frag.shader" />
     <None Include="shader\gyroid\vert.shader" />
-    <None Include="shader\light\basic.frag" />
-    <None Include="shader\light\basic.vert" />
+    <None Include="shader\light\Gouraud.frag" />
+    <None Include="shader\light\Gouraud.vert" />
+    <None Include="shader\light\light.frag" />
+    <None Include="shader\light\light.vert" />
+    <None Include="shader\light\Phong.frag" />
+    <None Include="shader\light\Phong.vert" />
     <None Include="shader\model\fragment.shader" />
     <None Include="shader\model\vertex.shader" />
     <None Include="shader\testGLSL\frag.shader" />
