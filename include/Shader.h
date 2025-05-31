@@ -12,6 +12,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "GL_Error.h"
+#include "Texture.h"
 
 class Shader
 {
@@ -39,6 +40,7 @@ public:
 	void SetUniform(const float r, const float g, const float b, const float a);
 	void SetUniform1f(const float val, const std::string& name) const;
 	void SetUniformV3(const glm::vec3 val, const std::string& name) const;
+	void SetTexture(Texture& tex, unsigned int texId, const std::string& name) const;
 	void Compile();
 	void Use()const;
 	void Unuse()const;

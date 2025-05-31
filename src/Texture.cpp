@@ -100,7 +100,7 @@ int Texture::ReadImage(int flip) {
 
     cv::Mat img = cv::imread(m_imagePath);
     if (img.empty()) {
-        std::cout <<m_imagePath<< " read image failed£¡" << std::endl;
+        
         return -1;
     }
     cv::cvtColor(img, img, cv::COLOR_BGR2RGB);

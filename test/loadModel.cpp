@@ -33,6 +33,7 @@
 #include "constants.h"
 #include "Render.h"
 #include "Model3D.h"
+#include "functions.h"
 
 
 #if 0
@@ -150,10 +151,11 @@ int main() {
 
 	// Render
 	Render* rdPtr = new Render();
-	Shader* shaderPtr = new Shader("shader/vertex.shader", "shader/fragment.shader");
+	Shader* shaderPtr = new Shader("shader/model/vertex.shader", "shader/model/fragment.shader");
 
 
-	std::string path = "res/model/beidou/beidou.pmx";
+	//std::string path = "res/model/beidou/beidou.pmx";
+	std::string path = "D:/workdir/elden_ring/map_unpack/stormveil/m10_00_00_00_910014.smd";
 
 	//std::string path = "res/model/c2010.fbx";
 	//std::string path = "res/model/cube.obj";

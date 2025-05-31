@@ -116,7 +116,15 @@ void Shader::SetUniformMat4(const glm::mat4& trans, const std::string& uniformNa
     // 参数4：符合 opengl 要求的矩阵数据
     GLCall(glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans)));
 }
+void Shader::SetTexture(Texture& tex, unsigned int gl_textureId, const std::string& name) const {
+    if (!(gl_textureId >= GL_TEXTURE0 && gl_textureId <= GL_TEXTURE31)) {
+        std::cout << "error texId, must in GL_TEXTURE0(" << GL_TEXTURE0 << ") ~ GL_TEXTURE31(" << GL_TEXTURE31 << ")\n";
+    }
+    GLCall(glActiveTexture(gl_textureId));
+    tex.Bind2D();
+    GLCall(glUniform1i(glGetUniformLocation(m_shaderProgramId, name.c_str()), gl_textureId - GL_TEXTURE0));
 
+}
 void Shader::Use() const {
     GLCall(glUseProgram(m_shaderProgramId));
 }
